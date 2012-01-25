@@ -14,8 +14,9 @@ module NovaReport
       ))
     end
 
-    def push_measure(url, value, measured_at = Time.now)
+    def push_measure(url, metric_id, value, measured_at = Time.now)
       push(url, measure: {
+        metric_id: metric_id,
         value: value,
         measured_at: measured_at
       })

@@ -20,7 +20,7 @@ describe NovaReport::Client do
 
   describe '#push' do
     before(:all) do
-      @url = "http://novagile.fr/#{SecureRandom.hex(32)}.json"
+      @url = "http://novagile.fr/api/measures.json"
       @hash = {
         :"key#{SecureRandom.random_number(100000)}" => SecureRandom.hex(32)
       }
@@ -37,18 +37,20 @@ describe NovaReport::Client do
 
   describe '#push_measure' do
     before(:all) do
-      @url = "http://novagile.fr/#{SecureRandom.hex(32)}.json"
+      @url = "http://novagile.fr/api/measures.json"
+      @metric_id = SecureRandom.hex(32)
       @value = SecureRandom.random_number(100000)
     end
 
     before do
       NovaReport::Client.any_instance.should_receive(:push).with(@url, measure: {
+        metric_id: @metric_id,
         value: @value,
         measured_at: @measured_at
       }).and_return(true)
     end
 
-    subject { NovaReport::Client.new(@api_key).push_measure(@url, @value, @measured_at)}
+    subject { NovaReport::Client.new(@api_key).push_measure(@url, @metric_id, @value, @measured_at)}
 
     it { should be_true }
   end
