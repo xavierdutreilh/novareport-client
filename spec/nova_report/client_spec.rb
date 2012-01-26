@@ -40,19 +40,19 @@ describe NovaReport::Client do
 
   describe '#push_measure' do
     before(:all) do
-      @metric_id = SecureRandom.hex(32)
+      @metric = SecureRandom.hex(32)
       @value = SecureRandom.random_number(100000)
     end
 
     before do
       NovaReport::Client.any_instance.should_receive(:push).with(measure: {
-        metric_id: @metric_id,
+        metric: @metric,
         value: @value,
         measured_at: @measured_at
       }).and_return(true)
     end
 
-    subject { NovaReport::Client.new(@url, @api_key).push_measure(@metric_id, @value, @measured_at)}
+    subject { NovaReport::Client.new(@url, @api_key).push_measure(@metric, @value, @measured_at)}
 
     it { should be_true }
   end
