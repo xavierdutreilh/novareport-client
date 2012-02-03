@@ -2,11 +2,11 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "nova_report-client"
+  s.name        = "novareport-client"
   s.version     = "0.0.1"
   s.authors     = ["Xavier Dutreilh"]
   s.email       = ["xavier@dutreilh.fr"]
-  s.homepage    = "http://github.com/novagile/nova_report-client"
+  s.homepage    = "http://github.com/novagile/novareport-client"
   s.summary     = %q{Measure pusher for Nova Report}
   s.description = %q{Nova Report Client is a tool that pushes measures to a Nova Report instance.}
 
