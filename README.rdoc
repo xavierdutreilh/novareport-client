@@ -1,3 +1,13 @@
 = Nova Report Client
 
-This project rocks and uses MIT-LICENSE.
+== Getting started
+
+1. Add novareport-client to your Gemfile
+    gem 'novareport-client', git: 'git://github.com/novagile/novareport-client.git', require: 'nova_report'
+2. Define authentication information (e.g., in an initializer)
+    NOVA_REPORT_API_URL = 'http://YOURDOMAIN.com/projects/XYZ/measures.json'
+    NOVA_REPORT_API_KEY = 'XYZABCDEFGHIJKLMNOPQRSTUVW'
+3. Innstantiate the client
+    @client = NovaReport::Client.new(NOVA_REPORT_API_URL, NOVA_REPORT_API_KEY)
+4. Push a new measure
+    @client.push_measure(:my_metric_name, 1)
